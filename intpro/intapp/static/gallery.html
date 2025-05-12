@@ -1,39 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Photo Gallery</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chess Gallery</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url('./background.png') no-repeat center center fixed;
+      background-size: cover;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+.gallery-container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+    }
+.gallery-item {
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+.gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+.gallery-item:hover {
+      transform: scale(1.1);
+    }
+/* Adjusted positions for larger size */
+    .item1 { top: 10%; left: 8%; }
+    .item2 { top: 5%; left: 38%; }
+    .item3 { top: 10%; right: 8%; }
+    .item4 { top: 40%; left: 4%; }
+    .item5 { top: 35%; left: 32%; }
+    .item6 { top: 40%; right: 4%; }
+    .item7 { bottom: 18%; left: 26%; }
+    .item8 { bottom: 18%; right: 26%; }
+    .item9 { bottom: 6%; left: 42%; }
+.lightbox {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+.lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 12px;
+    }
+     .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+    }
+ .footer {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      color: rgb(255, 255, 255);
+      font-size: 18px;
+      text-shadow: 1px 1px 3px black;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>NISHALINI R</h1>
-        <h2>Register Number: 212224040222</h2>
-        
-    </header>
-    <div class="gallery">
-        <img src="./image1.jpg" alt="Image 1">
-        <img src="./image2.jpg" alt="Image 2">
-        <img src="./image3.jpg" alt="Image 3">
-        <img src="./image4.jpg" alt="Image 4">
-        <img src="./image5.jpg" alt="Image 5">
-        <img src="./image6.jpg"alt="Image 6">
-        <img src="./image7.jpg"alt="Image 7">
-        <img src="./image8.webp"alt="Image 8">
-        <img src="./image9.jpg"alt="Image 9">
-        <img src="./image10.jpg"alt="Image 10">
 
-        
-    </div>
+<div class="gallery-container">
+<div class="gallery-item item1"><img src="./image2.jpg" alt="Actor 1"></div>
+    <div class="gallery-item item2"><img src="./image1.jpg" alt="Actor 2"></div>
+    <div class="gallery-item item3"><img src="./image3.jpg" alt="Actor 3"></div>
+    <div class="gallery-item item4"><img src="./image4.jpg" alt="Actor 4"></div>
+    <div class="gallery-item item5"><img src="./image5.jpg" alt="Actor 5"></div>
+    <div class="gallery-item item6"><img src="./image6.jpg" alt="Actor 6"></div>
 
-    <div class="modal" id="modal">
-        <span class="close" id="close">&times;</span>
-        <span class="nav prev" id="prev">&#10094;</span>
-        <img id="modal-img" src="" alt="">
-        <span class="nav next" id="next">&#10095;</span>
-    </div>
+  </div>
 
-    <script src="script.js"></script>
+  </div>
+
+  <div class="lightbox">
+    <span class="close">&times;</span>
+    <img src="" alt="Enlarged Image" />
+  </div>
+
+  <div class="footer">Designed and developed by NISHALINI R</div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const items = document.querySelectorAll('.gallery-item img');
+      const lightbox = document.querySelector('.lightbox');
+      const lightboxImage = document.querySelector('.lightbox img');
+      const closeBtn = document.querySelector('.close');
+
+      items.forEach(img => {
+        img.addEventListener('click', () => {
+          lightbox.style.display = 'flex';
+          lightboxImage.src = img.src;
+        });
+      });
+
+      closeBtn.addEventListener('click', () => {
+        lightbox.style.display = 'none';
+        lightboxImage.src = '';
+      });
+
+      lightbox.addEventListener('click', (e) => {
+        if (e.target !== lightboxImage) {
+          lightbox.style.display = 'none';
+          lightboxImage.src = '';
+        }
+      });
+    });
+  </script>
+
 </body>
 </html>
