@@ -112,9 +112,10 @@ window.addEventListener('click', (e) => {
 
 ## OUTPUT:
 
-![alt text](<intpro/intapp/static/Screenshot 2025-05-12 105231.png>)
+![Screenshot 2025-05-12 111742](https://github.com/user-attachments/assets/2bcbc372-f9b7-4449-bdaf-9be79192e475)
 
-![alt text](<intpro/intapp/static/Screenshot 2025-05-12 105252.png>)
+
+![Screenshot 2025-05-12 111802](https://github.com/user-attachments/assets/65a9cf1c-6920-41a9-a3ae-43d6779fbfe4)
 
 ## RESULT:
 The program for designing an interactive image gallery using HTML, CSS and JavaScript is executed successfully.
